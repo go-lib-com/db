@@ -4,6 +4,7 @@ import (
     "reflect"
 	_ "github.com/godror/godror"
 	"github.com/jmoiron/sqlx"
+	"github.com/JulioVecino/logger"
 )
 
 type Connection struct {
@@ -56,6 +57,8 @@ func (c *Connection) Error (err error) error {
 func (c *Connection) Select(obj interface {}, query string, arg ...interface{}) error {
    tp := reflect.ValueOf(obj)
    if tp.Elem().Kind() == reflect.Struct {
+      logger.Info("->",query)
+      logger.Json("OBJ GET", obj)
       return c.Db.Get(obj, query, arg...)
    }
    return c.Db.Select(obj, query, arg...)
