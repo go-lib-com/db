@@ -3,6 +3,7 @@ package db
 import (
     "reflect"
 	_ "github.com/godror/godror"
+	_ "github.com/lib/pq"
 	"github.com/jmoiron/sqlx"
 )
 
