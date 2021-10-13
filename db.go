@@ -13,7 +13,7 @@ type Connection struct {
 }
 
 func NewConnection(strConn string, transaction bool) (*Connection, error) {
-    db, err := sqlx.Connect("godror", strConn)
+    db, err := sqlx.Connect("postgres", strConn)
     if err != nil {
         return nil, err
     }
